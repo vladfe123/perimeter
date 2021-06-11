@@ -15,8 +15,6 @@ void calculateSides(double *coordsX, double *coordsY, double *sideWidths, int am
 	double xpow = 0, ypow = 0;
 	for (int i = 0; i < am; i++)
 	{
-		xpow = pow((coordsX[i + 1] - coordsX[i]), 2);
-		ypow = pow((coordsY[i + 1] - coordsY[i]), 2);
 		isLast = i == (am - 1);
 		if (isLast)
 		{

@@ -3,7 +3,12 @@
 
 TEST(MathPartTest, TestDistancesCalculation) 
 {
-	EXPECT_TRUE(false);
+	double side[] = { 0, 0 };
+	double coordsX[] = { 0, 0};
+	double coordsY[] = { 0, 2};
+	int am = sizeof(coordsX) / sizeof(double);
+	calculateSides(coordsX,coordsY,side,am);
+	EXPECT_NEAR(2, side[1], 0.01);
 }
 
 TEST(MathPartTest, TestPerimeterCalculation) 
