@@ -33,16 +33,23 @@ int main()
 	
 	printf("Input Number of Points ");
 	scanf_s("%i", &am);
-	coordsX = (double*)malloc(am * sizeof(double));
-	coordsY = (double*)malloc(am * sizeof(double));
+	if (am > 0) 
+	{
+		coordsX = (double*)malloc(am * sizeof(double));
+		coordsY = (double*)malloc(am * sizeof(double));
 	
-	promptForValues(coordsX, coordsY, am);
+		promptForValues(coordsX, coordsY, am);
 
-	perimeter = calculatePerimeter(coordsX, coordsY, am);
+		perimeter = calculatePerimeter(coordsX, coordsY, am);
 
-	printPerimeter(coordsX, coordsY, perimeter, am);
-	free(coordsX);
-	free(coordsY);
+		printPerimeter(coordsX, coordsY, perimeter, am);
+		free(coordsX);
+		free(coordsY);
+	}
+	else
+	{
+		printf("Number of Points can't be negative");
+	}
 
 }
 
