@@ -26,7 +26,6 @@ void promptForValues(double *coordsX, double *coordsY, int am)
 
 int main()
 {
-	int count = 0;
 	double* coordsX = 0;
 	double* coordsY = 0;
 	int am = 0;
