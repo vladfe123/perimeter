@@ -1,8 +1,18 @@
-
+/**
+* @file Perimeter.cpp
+* @author Федоренко В.О., гр. 515-і, вариант 8
+* @date 10 Июня 2021
+* @brief Навчальна практика
+* Расчёт периметра многоугольника
+*/
 #include <math.h>
 #include <iostream>
 #include "MathPart.h"
 
+int clear_stdin() {
+	while (getchar() != '\n');
+	return 1;
+}
 void printPerimeter(double *coordsX, double *coordsY, double perimeter, int am)
 {	
 	printf("Coordinates entered:\n");
@@ -13,14 +23,25 @@ void printPerimeter(double *coordsX, double *coordsY, double perimeter, int am)
 	printf("Perimeter of the polygon is: %lf\n", perimeter);
 }
 
-void promptForValues(double *coordsX, double *coordsY, int am)
+bool promptForValues(double *coordsX, double *coordsY, int am)
 {
+	char c;
 	for (int count = 0; count < am; count++)
 	{
+
 		printf("Input x coordinate\n");
-		scanf_s("%lf", &coordsX[count]);
+		if (scanf_s("%lf%c", &coordsX[count], &c) != 2 || c !='\n' && clear_stdin())
+		{
+			printf("Enter Number!\n");
+			return false;
+		}
 		printf("Input y coordinate\n");
-		scanf_s("%lf", &coordsY[count]);
+		if (scanf_s("%lf%c", &coordsY[count], &c) != 2 || c != '\n' && clear_stdin())
+		{
+			printf("Enter Number!\n");
+			return false;
+		}
+		
 	}
 }
 
@@ -30,7 +51,7 @@ int main()
 	double* coordsY = 0;
 	int am = 0;
 	double perimeter = 0;
-	
+	bool isNumber;
 	printf("Input Number of Points ");
 	scanf_s("%i", &am);
 	if (am > 0) 
@@ -38,18 +59,25 @@ int main()
 		coordsX = (double*)malloc(am * sizeof(double));
 		coordsY = (double*)malloc(am * sizeof(double));
 	
-		promptForValues(coordsX, coordsY, am);
+		isNumber = promptForValues(coordsX, coordsY, am);
+		if (isNumber == false) 
+		{
+			return -1;
+		}
+		else 
+		{
+			perimeter = calculatePerimeter(coordsX, coordsY, am);
 
-		perimeter = calculatePerimeter(coordsX, coordsY, am);
-
-		printPerimeter(coordsX, coordsY, perimeter, am);
-		free(coordsX);
-		free(coordsY);
+			printPerimeter(coordsX, coordsY, perimeter, am);
+			free(coordsX);
+			free(coordsY);
+		}
+		
 	}
 	else
 	{
 		printf("Number of Points can't be negative");
 	}
-
+	return 0;
 }
 

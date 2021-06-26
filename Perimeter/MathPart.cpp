@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "MathPart.h"
 
@@ -10,7 +9,7 @@
 * @am - number of elements;
 */
 void calculateSides(double *coordsX, double *coordsY, double *sideWidths, int am)
-{
+{	
 	bool isLast = false;
 	double xpow = 0, ypow = 0;
 	for (int i = 0; i < am; i++)

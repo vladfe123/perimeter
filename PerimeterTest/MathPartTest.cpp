@@ -34,6 +34,18 @@ TEST(MathPartTest, TestOctagonCalculation)
 
 	EXPECT_NEAR(40.97, perimeter, 0.01);
 }
+TEST(MathPartTest, TestSquareCalculation)
+{
+	double perimeter = 0;
+
+	double coordsX[] = { -5, 3, -1, 7 };
+	double coordsY[] = { 2, -6, 9, 8};
+	int am = sizeof(coordsX) / sizeof(double);
+
+	perimeter = calculatePerimeter(coordsX, coordsY, am);
+
+	EXPECT_NEAR(48.31, perimeter, 0.01);
+}
 TEST(MathPartTest, TestOneElementPerimenterCalculation)
 {
 	double perimeter = 0;
@@ -46,6 +58,7 @@ TEST(MathPartTest, TestOneElementPerimenterCalculation)
 
 	EXPECT_NEAR(0, perimeter, 0.01);
 }
+
 TEST(MathPartTest, TestOneSidePerimenterCalculation)
 {
 	double perimeter = 0;
@@ -58,3 +71,4 @@ TEST(MathPartTest, TestOneSidePerimenterCalculation)
 
 	EXPECT_NEAR(5.65, perimeter, 0.01);
 }
+
